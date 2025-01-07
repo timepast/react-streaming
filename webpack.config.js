@@ -3,18 +3,18 @@ import { fileURLToPath } from "url";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-// 生成 __dirname 等效值
+// create __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
   mode: "production",
   entry: {
-    index: "./src/index.js", // 主入口，包含 React 和 ReactDOM
+    index: "./src/index.js", // main entry, include React and ReactDOM
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "index.js", // 只输出一个 client.js 文件
+    filename: "index.js",
     publicPath: "/dist/",
   },
   module: {
@@ -43,19 +43,18 @@ export default {
     extensions: [".js", ".jsx"],
   },
   optimization: {
-    splitChunks: false, // 禁用模块拆分，所有内容打包到 client.js
+    splitChunks: false, // don't use split module for index.js
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "index.html",
-      inject: "body", // 将脚本插入到 body 底部
+      inject: "body", // insert the script to the bottom of the page
       minify: {
-        // 👇 禁用注释移除
         removeComments: false,
-        collapseWhitespace: false, // 可选，压缩空白字符
-        keepClosingSlash: true, // 保留单标签的闭合斜杠
-        removeRedundantAttributes: false, // 不移除多余的属性
+        collapseWhitespace: false, // Optionally, compress whitespace characters
+        keepClosingSlash: true, // Retain the closing slash for the single label
+        removeRedundantAttributes: false, // No redundant attributes are removed
       },
     }),
     new MiniCssExtractPlugin({

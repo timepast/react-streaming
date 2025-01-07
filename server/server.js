@@ -4,12 +4,12 @@ import { render } from "./render.js";
 const app = express();
 const PORT = 3000;
 
-// 处理渲染请求
+// handle render request
 app.get("/", async (req, res) => {
   render(req.url, res);
 });
 
-// 提供静态文件
+// Static files are provided
 app.use(express.static("."));
 
 app.listen(PORT, () => {

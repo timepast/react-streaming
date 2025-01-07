@@ -23,11 +23,11 @@ export function useData() {
   const ctx = useContext(DataContext);
 
   if (ctx) {
-    // 服务端渲染时
+    // if server render
     console.log("Server Data:", ctx.read());
     return ctx.read().comments;
   } else if (typeof window !== "undefined" && window.__INITIAL_DATA__) {
-    // 客户端渲染时，使用注入的数据
+    // use inject data by client render
     return window.__INITIAL_DATA__.comments;
   }
 

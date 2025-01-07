@@ -34,8 +34,8 @@ export function render(url, res) {
       res.write(initDataScript);
       res.write(afterContent);
 
-      // 🚨 注意：不要手动调用 res.end()
-      // 交由流来管理响应关闭
+      // 🚨 notice: don't call res.end() manually
+      // manage to close response by pipe
       // res.end();
     },
     onShellError() {
@@ -62,13 +62,13 @@ function createServerData() {
       };
       status = "success";
       resolve();
-    }, 500); // 模拟异步数据请求
+    }, 500); // simulate asynchronous data requests
   });
 
   return {
     read() {
       if (status === "pending") {
-        throw promise; // Suspense 将捕获这个 promise
+        throw promise; // Suspense wil capture promise
       }
       if (status === "success") {
         return result;

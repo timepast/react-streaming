@@ -6,7 +6,7 @@ export default function Comments() {
   const comments = useData();
 
   useEffect(() => {
-    console.log("Client Comments:", comments); // 检查数据
+    console.log("Client Comments:", comments); // check data
   }, []);
 
   return (
