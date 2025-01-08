@@ -7,3 +7,10 @@ To reduce the white green time and deliver the initial content faster, Server-Si
 On the initial screen, components such as the header, navbar, sidebar and content are critical. However, content data is often fetched more slowly due to dependencies, causing delays. To mitigate this, we can stream the response using HTTP chunked transfer encoding, a built-in protocal feature that allows the server to send parts of the response as they become ready.
 
 This approach enables the static layout(e.g., header, navbar, sidebar) to render immediately while the slower content data continues to load and render incrementally, significantly improving the user experience.
+
+# Use
+
+```zsh
+npm i
+npm start
+```
